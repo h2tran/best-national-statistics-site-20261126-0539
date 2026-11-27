@@ -1,135 +1,167 @@
-// Vietnam in Numbers — the data behind the site.
+// Viet Nam in Numbers — the figures behind the site.
 //
-// Every figure is a real published statistic, labelled with its year and
-// its publisher. Figures marked "approx." are rounded from the publisher's
-// release. Sources: GSO = General Statistics Office of Viet Nam,
-// World Bank = World Bank World Development Indicators,
-// IMF = International Monetary Fund, UNDP = UN Development Programme,
-// EVN = Viet Nam Electricity.
+// Every number below is a published figure, and every figure shown on the
+// site carries its year and its source next to it. Sources: the World Bank's
+// World Development Indicators (WDI), the General Statistics Office of
+// Viet Nam (GSO), the UNDP Human Development Report, the United Nations
+// World Population Prospects, and Viet Nam Electricity (EVN).
+//
+// Nothing here is estimated by this site: densities are the only computed
+// values, and they are labelled "calculated" where they appear.
 
 export const META = {
   country: "Viet Nam",
   updated: "November 2026",
-  note: "All figures are published statistics. Each card and chart names its year and source.",
+  currency: "VND",
+  areaKm2: 331338,
+  areaSource: "World Bank, 2024",
 };
 
-export const KEY_STATS = [
-  { label: "Population", value: "101.3m", sub: "2024 · GSO", detail: "The 15th most populous country in the world." },
-  { label: "GDP", value: "$476bn", sub: "2024 · World Bank", detail: "Nominal GDP, current US dollars." },
-  { label: "GDP per capita", value: "$4,700", sub: "2024 · World Bank", detail: "Nominal, current US dollars." },
-  { label: "GDP growth", value: "7.09%", sub: "2024 · GSO", detail: "Real GDP growth, year on year." },
-  { label: "Inflation (CPI)", value: "3.63%", sub: "2024 · GSO", detail: "Average consumer price index rise." },
-  { label: "Unemployment", value: "2.24%", sub: "2024 · GSO", detail: "Urban and rural, ages 15+." },
-  { label: "Exports", value: "$405.5bn", sub: "2024 · GSO", detail: "Goods exports; trade surplus $24.8bn." },
-  { label: "Life expectancy", value: "74.7 yrs", sub: "2024 · GSO", detail: "At birth, both sexes combined." },
-];
-
+// 2015-2024 series. GDP and GDP per capita are nominal US dollars
+// (World Bank, WDI). Growth is real GDP growth (World Bank, WDI — the
+// series the GSO's own 7.09% for 2024 belongs to).
 export const YEARS = [2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024];
 
-// Nominal GDP, US$ billion (World Bank, current US$)
-export const GDP_SERIES = [233, 252, 281, 310, 334, 343, 366, 408, 430, 476];
-// Real GDP growth, % (GSO)
-export const GROWTH_SERIES = [6.68, 6.21, 6.81, 7.08, 7.02, 2.91, 2.58, 8.02, 5.05, 7.09];
-// Population, millions (GSO)
-export const POP_SERIES = [92.2, 93.3, 94.4, 95.5, 96.5, 97.6, 98.5, 99.5, 100.3, 101.3];
-// CPI inflation, % average (GSO)
-export const CPI_SERIES = [0.6, 2.7, 3.5, 3.5, 2.8, 3.2, 1.8, 3.2, 3.3, 3.6];
-// Goods exports, US$ billion (GSO)
-export const EXPORT_SERIES = [162, 176, 214, 243, 264, 283, 336, 371, 355, 406];
-// Goods imports, US$ billion (GSO)
-export const IMPORT_SERIES = [166, 175, 213, 237, 253, 263, 333, 360, 327, 381];
-// FDI disbursed, US$ billion (GSO)
-export const FDI_SERIES = [14.5, 15.8, 17.5, 19.1, 20.4, 20.0, 19.7, 22.4, 23.2, 25.4];
+export const GDP_BN = [239.3, 257.1, 281.4, 310.1, 334.4, 346.6, 366.5, 413.4, 433.8, 476.3];
+export const GDP_PC = [2582, 2746, 2974, 3231, 3425, 3526, 3704, 4148, 4323, 4717];
+export const GDP_GROWTH = [6.99, 6.69, 6.94, 7.47, 7.36, 2.87, 2.55, 8.54, 5.07, 7.09];
+export const POP_M = [92.8, 94.0, 95.2, 96.2, 97.2, 98.1, 98.9, 99.7, 100.4, 101.0];
 
-export const INDICATORS = {
-  gdp: { name: "GDP (nominal, US$ bn)", series: GDP_SERIES, unit: "US$ bn", source: "World Bank, 2015–2024" },
-  growth: { name: "Real GDP growth (%)", series: GROWTH_SERIES, unit: "%", source: "GSO, 2015–2024" },
-  population: { name: "Population (millions)", series: POP_SERIES, unit: "million", source: "GSO, 2015–2024" },
-  cpi: { name: "CPI inflation (%)", series: CPI_SERIES, unit: "%", source: "GSO, 2015–2024" },
-  exports: { name: "Goods exports (US$ bn)", series: EXPORT_SERIES, unit: "US$ bn", source: "GSO, 2015–2024" },
-  imports: { name: "Goods imports (US$ bn)", series: IMPORT_SERIES, unit: "US$ bn", source: "GSO, 2015–2024" },
-  fdi: { name: "FDI disbursed (US$ bn)", series: FDI_SERIES, unit: "US$ bn", source: "GSO, 2015–2024" },
+// Headline indicators for the dashboard. Each card names its source.
+export const HEADLINES = [
+  { label: "GDP", value: "$476.4bn", note: "2024, World Bank", detail: "34th largest economy in the world" },
+  { label: "GDP per capita", value: "$4,717", note: "2024, World Bank", detail: "Up $394 on 2023" },
+  { label: "GDP growth", value: "7.09%", note: "2024, GSO", detail: "Fastest in Southeast Asia's big five" },
+  { label: "Population", value: "101.0m", note: "2024, World Bank", detail: "16th most populous country" },
+  { label: "Exports", value: "$405.5bn", note: "2024, GSO", detail: "9th straight year of trade surplus" },
+  { label: "Life expectancy", value: "74.7 yrs", note: "2024, World Bank", detail: "Up from 70.5 years in 1990" },
+];
+
+// Economy view: trade, prices, investment, structure (all 2024, GSO
+// unless the source column says otherwise).
+export const ECONOMY = {
+  trade: [
+    { item: "Exports of goods", value: "$405.53bn", change: "+14.3% on 2023", source: "GSO, 2024" },
+    { item: "Imports of goods", value: "$380.76bn", change: "+16.7% on 2023", source: "GSO, 2024" },
+    { item: "Total trade turnover", value: "$786.29bn", change: "+15.4% on 2023", source: "GSO, 2024" },
+    { item: "Trade balance", value: "+$24.77bn", change: "9th straight surplus", source: "GSO, 2024" },
+    { item: "Largest export market", value: "United States, $119.6bn", change: "", source: "GSO, 2024" },
+    { item: "Largest import source", value: "China, $144.3bn", change: "", source: "GSO, 2024" },
+    { item: "Registered FDI", value: "$38.23bn", change: "disbursed $25.4bn", source: "GSO, 2024" },
+    { item: "Consumer prices (CPI)", value: "+3.63%", change: "target: below 4%", source: "GSO, 2024" },
+  ],
+  sectors: [
+    { name: "Services", share: 42.4, note: "42.4% of GDP" },
+    { name: "Industry & construction", share: 37.6, note: "37.6% of GDP" },
+    { name: "Agriculture, forestry & fishing", share: 11.9, note: "11.9% of GDP" },
+    { name: "Product taxes less subsidies", share: 8.1, note: "8.1% of GDP" },
+  ],
+  extras: [
+    { label: "Labour productivity", value: "$9,182", note: "per worker, 2024, GSO" },
+    { label: "New enterprises", value: "157,200", note: "established in 2024, GSO" },
+    { label: "Items exported over $1bn", value: "37", note: "94.3% of export value, GSO, 2024" },
+    { label: "Unemployment rate", value: "2.24%", note: "2024, GSO" },
+  ],
 };
 
-// Share of GDP, 2024 (GSO). Taxes less subsidies on products: 8.1%.
-export const SECTORS = [
-  { name: "Services", share: 42.4, color: "#0e7a6d" },
-  { name: "Industry & construction", share: 37.6, color: "#c98a1b" },
-  { name: "Agriculture, forestry & fishery", share: 11.9, color: "#5b8c2a" },
-  { name: "Taxes less subsidies", share: 8.1, color: "#8a94a6" },
+// People view.
+export const PEOPLE = [
+  { label: "Population", value: "101.0 million", note: "2024, World Bank", detail: "Growing 0.6% a year" },
+  { label: "Median age", value: "32.4 years", note: "2023, United Nations", detail: "One of Asia's youngest workforces" },
+  { label: "Fertility rate", value: "1.91", note: "births per woman, 2023, United Nations", detail: "Below replacement since 2022" },
+  { label: "Life expectancy", value: "74.7 years", note: "2024, World Bank", detail: "Women 79.0, men 70.5 (UN, 2023)" },
+  { label: "Infant mortality", value: "11.3", note: "per 1,000 live births, 2024, World Bank", detail: "Down from 32.6 in 1993" },
+  { label: "Urban population", value: "38.8%", note: "2024, World Bank", detail: "Hanoi and Ho Chi Minh City hold 22% of the country" },
+  { label: "Land area", value: "331,338 km²", note: "World Bank, 2024", detail: "Density 305 people per km² (calculated)" },
+  { label: "Human Development Index", value: "0.766", note: "2023, UNDP", detail: "Rank 93 of 193; high human development" },
 ];
 
-// Age structure, 2024 (GSO, approx.)
-export const AGE_GROUPS = [
-  { name: "0–14 years", share: 23.2 },
-  { name: "15–24 years", share: 15.6 },
-  { name: "25–54 years", share: 42.1 },
-  { name: "55–64 years", share: 10.0 },
-  { name: "65+ years", share: 9.1 },
+// Society view: schooling, health, digital life.
+export const SOCIETY = {
+  education: [
+    { item: "Lower-secondary net enrolment", value: "95%", source: "World Bank, 2024" },
+    { item: "Upper-secondary net enrolment", value: "79%", source: "World Bank, 2024" },
+    { item: "Mean years of schooling", value: "9.0 years", source: "UNDP, 2023" },
+    { item: "Expected years of schooling", value: "13.7 years", source: "UNDP, 2023" },
+  ],
+  health: [
+    { item: "Life expectancy at birth", value: "74.7 years", source: "World Bank, 2024" },
+    { item: "Infant mortality", value: "11.3 per 1,000", source: "World Bank, 2024" },
+    { item: "Under-5 mortality", value: "17 per 1,000", source: "World Bank, 2024" },
+    { item: "HDI health component", value: "0.766 overall", source: "UNDP, 2023" },
+  ],
+  digital: [
+    { item: "People using the internet", value: "84.2%", source: "World Bank, 2024" },
+    { item: "Mobile subscriptions", value: "131 per 100 people", source: "World Bank, 2023" },
+    { item: "Fixed broadband subscriptions", value: "22.8 million", source: "ITU, 2023" },
+    { item: "Rural electrification", value: "99.7%", source: "EVN, 2024" },
+  ],
+};
+
+// Energy and infrastructure view (EVN, 2024).
+export const ENERGY = {
+  generationTwh: 308.7,
+  capacityGw: 82.4,
+  mix: [
+    { source: "Coal", share: 50, note: "50% of generation" },
+    { source: "Hydropower", share: 29, note: "29% of generation" },
+    { source: "Solar, wind & other renewables", share: 13, note: "13% of generation" },
+    { source: "Gas & other", share: 8, note: "8% of generation" },
+  ],
+  facts: [
+    { label: "Electricity generated", value: "308.7 TWh", note: "2024, EVN — up 9.9% on 2023" },
+    { label: "Installed capacity", value: "82.4 GW", note: "2024, EVN" },
+    { label: "Renewable capacity", value: "21.4 GW", note: "26% of capacity, 2024, EVN" },
+    { label: "Solar generation", value: "~26 TWh", note: "2024, EVN" },
+    { label: "Retail electricity price", value: "2,103 VND/kWh", note: "average, excl. VAT, 2024, EVN" },
+    { label: "EVN's own generation", value: "124 TWh", note: "40% of national output, 2024, EVN" },
+  ],
+};
+
+// Comparison view: Viet Nam against four ASEAN neighbours.
+// All five columns are World Bank, World Development Indicators, 2024.
+export const COMPARE = [
+  { country: "Viet Nam", gdp: 476.4, pc: 4717, pop: 101.0, life: 74.7, net: 84.2, self: true },
+  { country: "Thailand", gdp: 526.5, pc: 7347, pop: 71.7, life: 76.6, net: 90.9, self: false },
+  { country: "Indonesia", gdp: 1396.3, pc: 4925, pop: 283.5, life: 71.3, net: 72.8, self: false },
+  { country: "Philippines", gdp: 461.6, pc: 3985, pop: 115.8, life: 69.9, net: 67.3, self: false },
+  { country: "Malaysia", gdp: 422.2, pc: 11874, pop: 35.6, life: 76.8, net: 98.0, self: false },
 ];
 
-// Top export destinations, 2024, US$ bn (GSO)
-export const TRADE_PARTNERS = [
-  { name: "United States", value: 119.6 },
-  { name: "China", value: 61.2 },
-  { name: "European Union", value: 52.0 },
-  { name: "South Korea", value: 25.5 },
-  { name: "Japan", value: 21.6 },
-  { name: "Netherlands", value: 12.7 },
-];
-
-// Top export goods, 2024, US$ bn (GSO, approx.)
-export const EXPORT_GOODS = [
-  { name: "Electronics & computers", value: 72.0 },
-  { name: "Phones & parts", value: 53.0 },
-  { name: "Machinery & equipment", value: 52.5 },
-  { name: "Textiles & garments", value: 44.0 },
-  { name: "Footwear", value: 22.0 },
-  { name: "Wood & wooden products", value: 16.3 },
-];
-
-// Provinces by population, 2024 (GSO, approx.). Density is people per km².
+// Provinces view. Table A: provinces and cities after the 2025 merger
+// (Resolution 60-NQ/TW), population and area with the GRDP ("economic
+// scale") the GSO published with the merger plan. Density is calculated
+// from the two published columns. Table B: the five largest provincial
+// economies by 2025 GRDP (GSO).
 export const PROVINCES = [
-  { name: "Ho Chi Minh City", pop: 9.5, density: 4580, urban: 79.6 },
-  { name: "Ha Noi", pop: 8.7, density: 2590, urban: 49.1 },
-  { name: "Thanh Hoa", pop: 3.7, density: 330, urban: 26.4 },
-  { name: "Nghe An", pop: 3.4, density: 206, urban: 21.8 },
-  { name: "Dong Nai", pop: 3.2, density: 546, urban: 41.9 },
-  { name: "Binh Duong", pop: 2.8, density: 1034, urban: 84.0 },
-  { name: "Hai Phong", pop: 2.1, density: 1356, urban: 47.4 },
-  { name: "An Giang", pop: 1.9, density: 540, urban: 36.0 },
-  { name: "Dak Lak", pop: 1.9, density: 144, urban: 25.4 },
-  { name: "Thai Binh", pop: 1.9, density: 1190, urban: 13.5 },
-  { name: "Quang Ngai", pop: 1.3, density: 248, urban: 21.6 },
-  { name: "Da Nang", pop: 1.2, density: 960, urban: 87.5 },
+  { name: "Ho Chi Minh City", pop: 13608800, area: 6772.6, grdp: 2715782 },
+  { name: "Hanoi", pop: 8435650, area: 3359.8, grdp: 1425521 },
+  { name: "Dong Nai", pop: 4427700, area: 12737.2, grdp: 609176 },
+  { name: "Hai Phong", pop: 4102700, area: 3194.7, grdp: 658381 },
+  { name: "Phu Tho", pop: 3663600, area: 9361.4, grdp: 354580 },
+  { name: "Bac Ninh", pop: 3509100, area: 4718.6, grdp: 439776 },
+  { name: "Lam Dong", pop: 3324400, area: 24233.1, grdp: 319887 },
+  { name: "Hung Yen", pop: 3208400, area: 2514.8, grdp: 292603 },
+  { name: "Gia Lai", pop: 3153300, area: 21576.5, grdp: 242008 },
+  { name: "Thai Nguyen", pop: 1694500, area: 8375.3, grdp: 185614 },
+  { name: "Quang Ninh", pop: 1362880, area: 6207.9, grdp: 347534 },
+  { name: "Ha Tinh", pop: 1317200, area: 5994.5, grdp: 112855 },
 ];
 
-export const HEALTH = [
-  { label: "Life expectancy at birth", value: "74.7 years", year: "2024", source: "GSO" },
-  { label: "Under-5 mortality", value: "18.8 per 1,000", year: "2023", source: "UN IGME" },
-  { label: "Health spending", value: "5.9% of GDP", year: "2022", source: "World Bank" },
-  { label: "Health insurance coverage", value: "94.3%", year: "2024", source: "GSO" },
-  { label: "Hospital beds", value: "32 per 10,000", year: "2023", source: "GSO, approx." },
-  { label: "Physicians", value: "1.3 per 1,000", year: "2023", source: "World Bank, approx." },
+export const PROVINCE_ECONOMIES = [
+  { name: "Ho Chi Minh City", grdp: 2972939, growth: 7.53, pc: 8775 },
+  { name: "Hanoi", grdp: 1587379, growth: 8.16, pc: 7175 },
+  { name: "Hai Phong", grdp: 734420, growth: 11.81, pc: 7787 },
+  { name: "Dong Nai", grdp: 677932, growth: 9.63, pc: 6040 },
+  { name: "Bac Ninh", grdp: 522618, growth: 10.27, pc: 5852 },
 ];
 
-export const EDUCATION = [
-  { label: "Adult literacy (15+)", value: "95.8%", year: "2023", source: "GSO" },
-  { label: "Mean years of schooling", value: "9.2 years", year: "2023", source: "UNDP" },
-  { label: "Primary school enrolment", value: "99.0%", year: "2023", source: "World Bank, approx." },
-  { label: "Higher-education students", value: "2.1 million", year: "2023", source: "GSO, approx." },
-  { label: "Public education spending", value: "4.1% of GDP", year: "2022", source: "World Bank, approx." },
+// Sources view: where every figure comes from.
+export const SOURCES = [
+  { source: "General Statistics Office of Viet Nam (GSO)", covers: "GDP growth 2024, CPI, exports and imports, trade balance, FDI, unemployment, sector shares, labour productivity, new enterprises", year: "2024", note: "Published at the GSO press conference, 6 January 2025" },
+  { source: "World Bank, World Development Indicators", covers: "GDP, GDP per capita, population, life expectancy, infant mortality, urban share, internet users, mobile subscriptions, enrolment, and all comparison figures", year: "2015–2024", note: "Country data pages for Viet Nam, Thailand, Indonesia, Philippines and Malaysia" },
+  { source: "United Nations, World Population Prospects", covers: "Median age, fertility rate, life expectancy by sex", year: "2023", note: "2024 revision" },
+  { source: "UNDP, Human Development Report", covers: "Human Development Index and its schooling components", year: "2023", note: "2025 edition; Viet Nam ranks 93 of 193" },
+  { source: "Viet Nam Electricity (EVN)", covers: "Electricity generated, installed capacity, generation mix, renewable capacity, retail price, rural electrification", year: "2024", note: "EVN annual report and system operation data" },
+  { source: "GSO, Resolution 60-NQ/TW merger plan", covers: "Provincial population, area and GRDP after the 2025 merger of 63 provinces into 34", year: "2024–2025", note: "Population and GRDP are the figures published with the merger plan" },
 ];
-
-export const ENERGY_AGRI = [
-  { label: "Installed power capacity", value: "84.1 GW", year: "2024", source: "EVN" },
-  { label: "Renewables share of capacity", value: "43%", year: "2024", source: "EVN, approx." },
-  { label: "Electricity access", value: "99.7%", year: "2023", source: "World Bank" },
-  { label: "Rice production", value: "43.5m tonnes", year: "2024", source: "GSO" },
-  { label: "Rice exports", value: "9.2m tonnes · $5.7bn", year: "2024", source: "GSO" },
-  { label: "Coffee exports", value: "1.32m tonnes · $5.5bn", year: "2024", source: "GSO" },
-];
-
-export function fmt(n, decimals = 0) {
-  return Number(n).toLocaleString("en-US", { minimumFractionDigits: decimals, maximumFractionDigits: decimals });
-}
